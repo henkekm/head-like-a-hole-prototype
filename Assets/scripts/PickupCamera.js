@@ -27,7 +27,7 @@ function OnTriggerEnter(collision : Collider)
 		DisableMovement();
 		EnableFreelook();
 		throwableCamera.transform.position = cameraPosition.transform.position;
-		throwableCamera.rigidbody.isKinematic = true;
+		throwableCamera.GetComponent.<Rigidbody>().isKinematic = true;
 		cameraIsHeld = true;
 		
 		cameraIsPickupable = false;
@@ -38,10 +38,10 @@ function ThrowCamera()
 {
     if (Input.GetButtonDown("Fire1") && cameraIsHeld == true)
     {
-		throwableCamera.rigidbody.isKinematic = false;
-		throwableCamera.rigidbody.freezeRotation = false;
+		throwableCamera.GetComponent.<Rigidbody>().isKinematic = false;
+		throwableCamera.GetComponent.<Rigidbody>().freezeRotation = false;
 		
- 	    throwableCamera.rigidbody.AddForce(throwableCamera.transform.forward * throwVelocity);
+ 	    throwableCamera.GetComponent.<Rigidbody>().AddForce(throwableCamera.transform.forward * throwVelocity);
  	    
  	    cameraIsHeld = false;
  	    
@@ -86,18 +86,18 @@ function Footsteps()
 	{
 		if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
 		{
-			if(!audio.isPlaying)
+			if(!GetComponent.<AudioSource>().isPlaying)
 			{
-	        	audio.Play();
+	        	GetComponent.<AudioSource>().Play();
 	        }
 	    }
 	    else
 	    {
-	    	audio.Stop();
+	    	GetComponent.<AudioSource>().Stop();
 	    }
 	}
 	else
 	{
-		audio.Stop();
+		GetComponent.<AudioSource>().Stop();
 	}
 }

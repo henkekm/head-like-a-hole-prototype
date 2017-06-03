@@ -18,6 +18,6 @@ function ThrowRigidbody()
     if (Input.GetButtonDown("Fire1"))
     {
     	throwable.transform.position = held.transform.position;
- 	    throwable.rigidbody.AddForce(held.transform.forward * speed);
+ 	    throwable.GetComponent.<Rigidbody>().AddForce(held.transform.forward * speed);
     }
 }
